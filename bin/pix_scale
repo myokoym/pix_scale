@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require "pix_scale/command"
+
+PixScale::Command.run(*ARGV)
