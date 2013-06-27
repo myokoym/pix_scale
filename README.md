@@ -2,6 +2,11 @@
 
 A command line tool for scale of pix.
 
+## Requirements
+
+* Ruby/GdkPixbuf2 in
+  [Ruby-GNOME2](http://ruby-gnome2.sourceforge.jp/)
+
 ## Installation
 
     gem install pix_scale
