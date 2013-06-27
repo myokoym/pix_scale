@@ -1,4 +1,4 @@
-# PixScale
+# pix\_scale
 
 A command line tool for scale of pix.
 
