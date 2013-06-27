@@ -25,7 +25,7 @@ Example: pix_scale foo.png 0.5
         pic = Gdk::Pixbuf.new(pic_path)
         scaled_pic = pic.scale(pic.width * scale, pic.height * scale)
 
-        output_path = "#{dirname}/#{basename}-#{scale.to_s}#{extname}"
+        output_path = "#{dirname}/#{basename}-#{scale.to_s}.#{extname}"
         type = (/\Ajpg\z/ =~ extname) ? "jpeg" : extname
         scaled_pic.save(output_path, type)
       end
