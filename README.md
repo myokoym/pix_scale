@@ -12,7 +12,6 @@ A command line tool for scale of pix.
     -rw-rw-r-- 1 you you 46643  6 27 20:00 foo.png
 
     % pix_scale foo.png 0.5
-    pix_scale: output foo-0.5.png
 
     % ls -l
     -rw-rw-r-- 1 you you 46643  6 27 20:00 foo.png
