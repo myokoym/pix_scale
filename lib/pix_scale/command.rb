@@ -19,15 +19,15 @@ Example: pix_scale foo.png 0.5
 
       arguments.each do |pic_path|
         dirname  = File.dirname(pic_path)
-        basename = File.basename(pic_path)
-        extname  = File.extname(pic_path)
+        basename = File.basename(pic_path, ".*")
+        extname  = File.extname(pic_path).sub(/^\./, "")
 
-        pic = Gdk::Pixbuf2.new(pic_path)
-        pic.slace(pic.width * scale, pic.height * scale)
+        pic = Gdk::Pixbuf.new(pic_path)
+        scaled_pic = pic.scale(pic.width * scale, pic.height * scale)
 
-        output_path = File.join(dirname, basename, "-", scale.to_s)
-        type = /\.jpg/ =~ extname ? "jpeg" : extname.sub(/^\./, "")
-        pic.save(output_path, type)
+        output_path = "#{dirname}/#{basename}-#{scale.to_s}#{extname}"
+        type = (/\Ajpg\z/ =~ extname) ? "jpeg" : extname
+        scaled_pic.save(output_path, type)
       end
     end
   end
