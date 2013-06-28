@@ -7,6 +7,7 @@ class PicTest < Test::Unit::TestCase
     PixScale::Pic.scale_and_save(path, 0.5)
     assert_true(File.file?(scaled_path))
     assert_true(File.size(path) > File.size(scaled_path))
+    assert_true(File.size(scaled_path) > 0)
     File.delete(scaled_path)
   end
 end
