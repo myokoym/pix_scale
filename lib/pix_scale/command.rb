@@ -1,4 +1,4 @@
-require "gdk_pixbuf2"
+require "pix_scale/pic"
 require "pix_scale/version"
 
 module PixScale
@@ -18,16 +18,7 @@ Example: pix_scale foo.png 0.5
       scale = arguments.pop.to_f
 
       arguments.each do |pic_path|
-        dirname  = File.dirname(pic_path)
-        basename = File.basename(pic_path, ".*")
-        extname  = File.extname(pic_path).sub(/^\./, "")
-
-        pic = Gdk::Pixbuf.new(pic_path)
-        scaled_pic = pic.scale(pic.width * scale, pic.height * scale)
-
-        output_path = "#{dirname}/#{basename}-#{scale.to_s}.#{extname}"
-        type = (/\Ajpg\z/ =~ extname) ? "jpeg" : extname
-        scaled_pic.save(output_path, type)
+        Pic.scale_and_save(pic_path, scale)
       end
     end
   end
