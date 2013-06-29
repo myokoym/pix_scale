@@ -6,7 +6,7 @@ module PixScale
       new(path).scale_and_save(scale)
     end
 
-    attr_reader :path, :pic, :type
+    attr_reader :path, :type
     def initialize(path)
       @path = path
       @pic = Gdk::Pixbuf.new(path)
@@ -14,7 +14,7 @@ module PixScale
     end
 
     def scale_and_save(scale)
-      scaled_pic = pic.scale(pic.width * scale, pic.height * scale)
+      scaled_pic = @pic.scale(@pic.width * scale, @pic.height * scale)
 
       output_path = "#{dirname}/#{basename}-#{scale.to_s}#{extname}"
       scaled_pic.save(output_path, type)
