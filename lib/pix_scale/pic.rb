@@ -25,7 +25,17 @@ module PixScale
     end
 
     def scale!(scale)
-      @pic = @pic.scale(@pic.width * scale, @pic.height * scale)
+      if scale.is_a?(Float)
+        width = @pic.width * scale
+        height = @pic.height * scale
+      elsif /\A[0-9]+(\.[0-9]+)?\z/ =~ scale
+        width = @pic.width * scale.to_f
+        height = @pic.height * scale.to_f
+      elsif /\A[0-9]+[^\.0-9][0-9]+\z/ =~ scale
+        width, height = scale.split(/[^\.0-9]/).map(&:to_i)
+      end
+
+      @pic = @pic.scale(width, height)
     end
 
     def save(output_path)
