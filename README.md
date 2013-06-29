@@ -11,7 +11,7 @@ A command line tool for scale of pix.
 
     gem install pix_scale
 
-## Supported format
+## Official supported format
 
 * PNG
 * JPEG
