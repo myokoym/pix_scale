@@ -15,7 +15,7 @@ Example: pix_scale foo.png 0.5
         exit(true)
       end
 
-      scale = arguments.pop.to_f
+      scale = arguments.pop
 
       arguments.each do |pic_path|
         Pic.scale_and_save(pic_path, scale)
