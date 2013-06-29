@@ -10,7 +10,7 @@ module PixScale
     def initialize(path)
       @path = path
       @pic = Gdk::Pixbuf.new(path)
-      @type = (/\A\.jpg\z/ =~ extname) ? "jpeg" : extname.sub(/^\./, "")
+      @type = (/\A\.jpg\z/i =~ extname) ? "jpeg" : extname.sub(/^\./, "").downcase
     end
 
     def scale_and_save(scale)
