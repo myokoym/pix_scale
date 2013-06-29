@@ -28,6 +28,9 @@ module PixScale
       if scale.is_a?(Float)
         width = @pic.width * scale
         height = @pic.height * scale
+      elsif scale.is_a?(Integer)
+        width = scale
+        height = @pic.height * (scale.to_f / @pic.width)
       elsif /\A[0-9]+(\.[0-9]+)?\z/ =~ scale
         width = @pic.width * scale.to_f
         height = @pic.height * scale.to_f

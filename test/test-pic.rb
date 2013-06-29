@@ -44,6 +44,16 @@ class PicTest < Test::Unit::TestCase
     assert_equal(before_pic.height * scale.to_f, after_pic.height)
   end
 
+  def test_scale_integer_as_width
+    path = "test/fixtures/nijip.png"
+    width = 240
+    pic = PixScale::Pic.new(path)
+    before_pic = pic.instance_variable_get(:@pic).dup
+    scaled_pic = pic.scale(width).instance_variable_get(:@pic)
+    assert_equal(width, scaled_pic.width)
+    assert_equal(before_pic.height * (width.to_f / before_pic.width), scaled_pic.height)
+  end
+
   def test_scale_string_width_and_height
     path = "test/fixtures/nijip.png"
     width = 240
