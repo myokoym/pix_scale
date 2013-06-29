@@ -13,7 +13,7 @@ class PicTest < Test::Unit::TestCase
   end
 
   class ScaleAndSaveTest < self
-    def test_scale_and_save
+    def test_scale_and_save_png
       path = "test/fixtures/nijip.png"
       scale = 0.5
       scaled_path = "test/fixtures/nijip-0.5.png"
@@ -27,10 +27,31 @@ class PicTest < Test::Unit::TestCase
       assert_scale_and_save(path, scale, scaled_path)
     end
 
+    def test_scale_and_save_jpg
+      path = "test/fixtures/teabreak.jpg"
+      scale = 0.09
+      scaled_path = "test/fixtures/teabreak-0.09.jpg"
+      assert_scale_and_save(path, scale, scaled_path)
+    end
+
+    def test_scale_and_save_jpeg
+      path = "test/fixtures/teabreak.jpeg"
+      scale = 0.09
+      scaled_path = "test/fixtures/teabreak-0.09.jpeg"
+      assert_scale_and_save(path, scale, scaled_path)
+    end
+
     def test_scale_and_save_upcase_JPG
       path = "test/fixtures/teabreak.JPG"
       scale = 0.09
       scaled_path = "test/fixtures/teabreak-0.09.JPG"
+      assert_scale_and_save(path, scale, scaled_path)
+    end
+
+    def test_scale_and_save_upcase_JPEG
+      path = "test/fixtures/teabreak.JPEG"
+      scale = 0.09
+      scaled_path = "test/fixtures/teabreak-0.09.JPEG"
       assert_scale_and_save(path, scale, scaled_path)
     end
 
