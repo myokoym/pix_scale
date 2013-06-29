@@ -25,42 +25,37 @@ class PicTest < Test::Unit::TestCase
   end
 
   class ScaleTest < self
+    def setup
+      @path = "test/fixtures/nijip.png"
+      @pic = PixScale::Pic.new(@path)
+      @before_pic = @pic.instance_variable_get(:@pic).dup
+    end
+
     def test_float
-      path = "test/fixtures/nijip.png"
       scale = 0.5
-      pic = PixScale::Pic.new(path)
-      before_pic = pic.instance_variable_get(:@pic).dup
-      after_pic = pic.scale(scale).instance_variable_get(:@pic).dup
-      assert_equal(before_pic.width * scale, after_pic.width)
-      assert_equal(before_pic.height * scale, after_pic.height)
+      after_pic = @pic.scale(scale).instance_variable_get(:@pic).dup
+      assert_equal(@before_pic.width * scale, after_pic.width)
+      assert_equal(@before_pic.height * scale, after_pic.height)
     end
 
     def test_string_like_float
-      path = "test/fixtures/nijip.png"
       scale = "0.5"
-      pic = PixScale::Pic.new(path)
-      before_pic = pic.instance_variable_get(:@pic).dup
-      after_pic = pic.scale(scale).instance_variable_get(:@pic).dup
-      assert_equal(before_pic.width * scale.to_f, after_pic.width)
-      assert_equal(before_pic.height * scale.to_f, after_pic.height)
+      after_pic = @pic.scale(scale).instance_variable_get(:@pic).dup
+      assert_equal(@before_pic.width * scale.to_f, after_pic.width)
+      assert_equal(@before_pic.height * scale.to_f, after_pic.height)
     end
 
     def test_integer_as_width
-      path = "test/fixtures/nijip.png"
       width = 240
-      pic = PixScale::Pic.new(path)
-      before_pic = pic.instance_variable_get(:@pic).dup
-      scaled_pic = pic.scale(width).instance_variable_get(:@pic)
+      scaled_pic = @pic.scale(width).instance_variable_get(:@pic)
       assert_equal(width, scaled_pic.width)
-      assert_equal(before_pic.height * (width.to_f / before_pic.width), scaled_pic.height)
+      assert_equal(@before_pic.height * (width.to_f / @before_pic.width), scaled_pic.height)
     end
 
     def test_string_width_and_height
-      path = "test/fixtures/nijip.png"
       width = 240
       height = 180
-      pic = PixScale::Pic.new(path)
-      scaled_pic = pic.scale("#{width},#{height}").instance_variable_get(:@pic)
+      scaled_pic = @pic.scale("#{width},#{height}").instance_variable_get(:@pic)
       assert_equal(width, scaled_pic.width)
       assert_equal(height, scaled_pic.height)
     end
