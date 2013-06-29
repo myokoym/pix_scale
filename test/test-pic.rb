@@ -12,6 +12,7 @@ class PicTest < Test::Unit::TestCase
     File.delete(scaled_path)
   end
 
+  class ScaleAndSaveTest < self
   def test_scale_and_save
     path = "test/fixtures/nijip.png"
     scaled_path = "test/fixtures/nijip-0.5.png"
@@ -46,6 +47,7 @@ class PicTest < Test::Unit::TestCase
     assert_true(File.size(path) > File.size(scaled_path))
     assert_true(File.size(scaled_path) > 0)
     File.delete(scaled_path)
+  end
   end
 
   class ScaleTest < self
