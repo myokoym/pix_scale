@@ -34,7 +34,7 @@ A command line tool for scale of pix.
     % ls -l
     -rw-rw-r-- 1 you you 46643 2013-06-27 20:00 foo.png
 
-    % pix_scale foo.png 200,200
+    % pix_scale foo.png 200_200
 
     % ls -l
     -rw-rw-r-- 1 you you 46643 2013-06-27 20:00 foo.png
