@@ -29,16 +29,24 @@ A command line tool for scale of pix.
     -rw-rw-r-- 1 you you 46643 2013-06-27 20:00 foo.png
     -rw-rw-r-- 1 you you 18539 2013-06-27 20:01 foo-0.5.png
 
-### width,height
+### width/height
 
     % ls -l
     -rw-rw-r-- 1 you you 46643 2013-06-27 20:00 foo.png
 
-    % pix_scale foo.png 200_200
+    % pix_scale foo.png 200_200  # width_height
 
     % ls -l
     -rw-rw-r-- 1 you you 46643 2013-06-27 20:00 foo.png
     -rw-rw-r-- 1 you you 18539 2013-06-27 20:01 foo-200_200.png
+
+#### width only (Height maintains a ratio.)
+
+    % pix_scale foo.png 200
+
+#### height only (Width maintains a ratio.)
+
+    % pix_scale foo.png _200
 
 ### multiple files
 
