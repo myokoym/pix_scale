@@ -33,14 +33,14 @@ class PicTest < Test::Unit::TestCase
 
     def test_float
       scale = 0.5
-      scaled_pic = @pic.scale(scale).instance_variable_get(:@pic).dup
+      scaled_pic = @pic.scale(scale).instance_variable_get(:@pic)
       assert_equal(@before_pic.width * scale, scaled_pic.width)
       assert_equal(@before_pic.height * scale, scaled_pic.height)
     end
 
     def test_string_like_float
       scale = "0.5"
-      scaled_pic = @pic.scale(scale).instance_variable_get(:@pic).dup
+      scaled_pic = @pic.scale(scale).instance_variable_get(:@pic)
       assert_equal(@before_pic.width * scale.to_f, scaled_pic.width)
       assert_equal(@before_pic.height * scale.to_f, scaled_pic.height)
     end
