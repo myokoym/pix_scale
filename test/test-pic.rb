@@ -25,7 +25,7 @@ class PicTest < Test::Unit::TestCase
   end
 
   class ScaleTest < self
-    def test_scale_float
+    def test_float
       path = "test/fixtures/nijip.png"
       scale = 0.5
       pic = PixScale::Pic.new(path)
@@ -35,7 +35,7 @@ class PicTest < Test::Unit::TestCase
       assert_equal(before_pic.height * scale, after_pic.height)
     end
 
-    def test_scale_string_like_float
+    def test_string_like_float
       path = "test/fixtures/nijip.png"
       scale = "0.5"
       pic = PixScale::Pic.new(path)
@@ -45,7 +45,7 @@ class PicTest < Test::Unit::TestCase
       assert_equal(before_pic.height * scale.to_f, after_pic.height)
     end
 
-    def test_scale_integer_as_width
+    def test_integer_as_width
       path = "test/fixtures/nijip.png"
       width = 240
       pic = PixScale::Pic.new(path)
@@ -55,7 +55,7 @@ class PicTest < Test::Unit::TestCase
       assert_equal(before_pic.height * (width.to_f / before_pic.width), scaled_pic.height)
     end
 
-    def test_scale_string_width_and_height
+    def test_string_width_and_height
       path = "test/fixtures/nijip.png"
       width = 240
       height = 180
