@@ -51,6 +51,7 @@ module PixScale
       @pic.save(output_path, @type)
     end
 
+    private
     def dirname
       File.dirname(@path)
     end
