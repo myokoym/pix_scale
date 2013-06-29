@@ -52,6 +52,13 @@ class PicTest < Test::Unit::TestCase
       assert_equal(@before_pic.height * (width.to_f / @before_pic.width), scaled_pic.height)
     end
 
+    def test_string_as_width
+      width = "240"
+      scaled_pic = @pic.scale(width).instance_variable_get(:@pic)
+      assert_equal(width.to_i, scaled_pic.width)
+      assert_equal(@before_pic.height * (width.to_f / @before_pic.width), scaled_pic.height)
+    end
+
     def test_string_width_and_height
       width = 240
       height = 180

@@ -36,6 +36,9 @@ module PixScale
         height = @pic.height * scale.to_f
       elsif /\A[0-9]+[^\.0-9][0-9]+\z/ =~ scale
         width, height = scale.split(/[^\.0-9]/).map(&:to_i)
+      elsif /\A[0-9]+\z/ =~ scale
+        width = scale.to_i
+        height = @pic.height * (scale.to_f / @pic.width)
       end
 
       @pic = @pic.scale(width, height)
