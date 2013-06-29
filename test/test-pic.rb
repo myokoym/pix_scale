@@ -17,32 +17,25 @@ class PicTest < Test::Unit::TestCase
       path = "test/fixtures/nijip.png"
       scale = 0.5
       scaled_path = "test/fixtures/nijip-0.5.png"
-      File.delete(scaled_path) if File.exist?(scaled_path)
-      pic = PixScale::Pic.new(path)
-      pic.scale_and_save(scale)
-      assert_true(File.file?(scaled_path))
-      assert_true(File.size(path) > File.size(scaled_path))
-      assert_true(File.size(scaled_path) > 0)
-      File.delete(scaled_path)
+      assert_scale_and_save(path, scale, scaled_path)
     end
 
     def test_scale_and_save_upcase_PNG
       path = "test/fixtures/nyanko.PNG"
       scale = 0.66
       scaled_path = "test/fixtures/nyanko-0.66.PNG"
-      File.delete(scaled_path) if File.exist?(scaled_path)
-      pic = PixScale::Pic.new(path)
-      pic.scale_and_save(scale)
-      assert_true(File.file?(scaled_path))
-      assert_true(File.size(path) > File.size(scaled_path))
-      assert_true(File.size(scaled_path) > 0)
-      File.delete(scaled_path)
+      assert_scale_and_save(path, scale, scaled_path)
     end
 
     def test_scale_and_save_upcase_JPG
       path = "test/fixtures/teabreak.JPG"
       scale = 0.09
       scaled_path = "test/fixtures/teabreak-0.09.JPG"
+      assert_scale_and_save(path, scale, scaled_path)
+    end
+
+    private
+    def assert_scale_and_save(path, scale, scaled_path)
       File.delete(scaled_path) if File.exist?(scaled_path)
       pic = PixScale::Pic.new(path)
       pic.scale_and_save(scale)
