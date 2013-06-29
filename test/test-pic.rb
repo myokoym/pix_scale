@@ -24,6 +24,7 @@ class PicTest < Test::Unit::TestCase
     File.delete(scaled_path)
   end
 
+  class ScaleTest < self
   def test_scale_float
     path = "test/fixtures/nijip.png"
     scale = 0.5
@@ -62,5 +63,6 @@ class PicTest < Test::Unit::TestCase
     scaled_pic = pic.scale("#{width},#{height}").instance_variable_get(:@pic)
     assert_equal(width, scaled_pic.width)
     assert_equal(height, scaled_pic.height)
+  end
   end
 end
