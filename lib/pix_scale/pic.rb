@@ -14,7 +14,8 @@ module PixScale
     end
 
     def scale_and_save(scale)
-      output_path = "#{dirname}/#{basename}-#{scale.to_s}#{extname}"
+      scale_string = scale.to_s.sub(/[^\.0-9]/, "_")
+      output_path = "#{dirname}/#{basename}-#{scale_string}#{extname}"
       scale(scale).save(output_path)
     end
 

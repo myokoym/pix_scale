@@ -13,10 +13,17 @@ class PicTest < Test::Unit::TestCase
   end
 
   class ScaleAndSaveTest < self
-    def test_scale_and_save_png
+    def test_scale_and_save_rate
       path = "test/fixtures/nijip.png"
       scale = 0.5
       scaled_path = "test/fixtures/nijip-0.5.png"
+      assert_scale_and_save(path, scale, scaled_path)
+    end
+
+    def test_scale_and_save_width_and_height
+      path = "test/fixtures/nijip.png"
+      scale = "240,180"
+      scaled_path = "test/fixtures/nijip-240_180.png"
       assert_scale_and_save(path, scale, scaled_path)
     end
 
