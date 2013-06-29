@@ -33,16 +33,16 @@ class PicTest < Test::Unit::TestCase
 
     def test_float
       scale = 0.5
-      after_pic = @pic.scale(scale).instance_variable_get(:@pic).dup
-      assert_equal(@before_pic.width * scale, after_pic.width)
-      assert_equal(@before_pic.height * scale, after_pic.height)
+      scaled_pic = @pic.scale(scale).instance_variable_get(:@pic).dup
+      assert_equal(@before_pic.width * scale, scaled_pic.width)
+      assert_equal(@before_pic.height * scale, scaled_pic.height)
     end
 
     def test_string_like_float
       scale = "0.5"
-      after_pic = @pic.scale(scale).instance_variable_get(:@pic).dup
-      assert_equal(@before_pic.width * scale.to_f, after_pic.width)
-      assert_equal(@before_pic.height * scale.to_f, after_pic.height)
+      scaled_pic = @pic.scale(scale).instance_variable_get(:@pic).dup
+      assert_equal(@before_pic.width * scale.to_f, scaled_pic.width)
+      assert_equal(@before_pic.height * scale.to_f, scaled_pic.height)
     end
 
     def test_integer_as_width
