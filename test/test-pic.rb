@@ -24,7 +24,7 @@ class PicTest < Test::Unit::TestCase
     File.delete(scaled_path)
   end
 
-  def test_scale
+  def test_scale_float
     path = "test/fixtures/nijip.png"
     scale = 0.5
     pic = PixScale::Pic.new(path)
@@ -32,6 +32,16 @@ class PicTest < Test::Unit::TestCase
     after_pic = pic.scale(scale).instance_variable_get(:@pic).dup
     assert_equal(before_pic.width * scale, after_pic.width)
     assert_equal(before_pic.height * scale, after_pic.height)
+  end
+
+  def test_scale_string_like_float
+    path = "test/fixtures/nijip.png"
+    scale = "0.5"
+    pic = PixScale::Pic.new(path)
+    before_pic = pic.instance_variable_get(:@pic).dup
+    after_pic = pic.scale(scale).instance_variable_get(:@pic).dup
+    assert_equal(before_pic.width * scale.to_f, after_pic.width)
+    assert_equal(before_pic.height * scale.to_f, after_pic.height)
   end
 
   def test_scale_abs
