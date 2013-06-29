@@ -14,10 +14,22 @@ module PixScale
     end
 
     def scale_and_save(scale)
-      scaled_pic = @pic.scale(@pic.width * scale, @pic.height * scale)
-
       output_path = "#{dirname}/#{basename}-#{scale.to_s}#{extname}"
-      scaled_pic.save(output_path, @type)
+      scale(scale).save(output_path)
+    end
+
+    def scale(scale)
+      new_pic = self.dup
+      new_pic.scale!(scale)
+      new_pic
+    end
+
+    def scale!(scale)
+      @pic = @pic.scale(@pic.width * scale, @pic.height * scale)
+    end
+
+    def save(output_path)
+      @pic.save(output_path, @type)
     end
 
     def dirname

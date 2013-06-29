@@ -23,4 +23,14 @@ class PicTest < Test::Unit::TestCase
     assert_true(File.size(scaled_path) > 0)
     File.delete(scaled_path)
   end
+
+  def test_scale
+    path = "test/fixtures/nijip.png"
+    scale = 0.5
+    pic = PixScale::Pic.new(path)
+    before_pic = pic.instance_variable_get(:@pic).dup
+    after_pic = pic.scale(scale).instance_variable_get(:@pic).dup
+    assert_equal(before_pic.width * scale, after_pic.width)
+    assert_equal(before_pic.height * scale, after_pic.height)
+  end
 end
