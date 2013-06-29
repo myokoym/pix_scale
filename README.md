@@ -11,7 +11,36 @@ A command line tool for scale of pix.
 
     gem install pix_scale
 
+## Supported format
+
+* PNG
+* JPEG
+
 ## Usage
+
+### rate
+
+    % ls -l
+    -rw-rw-r-- 1 you you 46643 2013-06-27 20:00 foo.png
+
+    % pix_scale foo.png 0.5
+
+    % ls -l
+    -rw-rw-r-- 1 you you 46643 2013-06-27 20:00 foo.png
+    -rw-rw-r-- 1 you you 18539 2013-06-27 20:01 foo-0.5.png
+
+### width,height
+
+    % ls -l
+    -rw-rw-r-- 1 you you 46643 2013-06-27 20:00 foo.png
+
+    % pix_scale foo.png 200,200
+
+    % ls -l
+    -rw-rw-r-- 1 you you 46643 2013-06-27 20:00 foo.png
+    -rw-rw-r-- 1 you you 18539 2013-06-27 20:01 foo-200_200.png
+
+### multiple files
 
     % ls -l
     -rw-rw-r-- 1 you you 46643 2013-06-27 20:00 foo.png
