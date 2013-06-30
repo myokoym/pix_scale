@@ -13,49 +13,49 @@ class PicTest < Test::Unit::TestCase
   end
 
   class ScaleAndSaveTest < self
-    def test_scale_and_save_rate
+    def test_rate
       path = "test/fixtures/nijip.png"
       scale = 0.5
       scaled_path = "test/fixtures/nijip-0.5.png"
       assert_scale_and_save(path, scale, scaled_path)
     end
 
-    def test_scale_and_save_width_and_height
+    def test_width_and_height
       path = "test/fixtures/nijip.png"
       scale = "240,180"
       scaled_path = "test/fixtures/nijip-240_180.png"
       assert_scale_and_save(path, scale, scaled_path)
     end
 
-    def test_scale_and_save_upcase_PNG
+    def test_upcase_PNG
       path = "test/fixtures/nyanko.PNG"
       scale = 0.66
       scaled_path = "test/fixtures/nyanko-0.66.PNG"
       assert_scale_and_save(path, scale, scaled_path)
     end
 
-    def test_scale_and_save_jpg
+    def test_jpg
       path = "test/fixtures/teabreak.jpg"
       scale = 0.09
       scaled_path = "test/fixtures/teabreak-0.09.jpg"
       assert_scale_and_save(path, scale, scaled_path)
     end
 
-    def test_scale_and_save_jpeg
+    def test_jpeg
       path = "test/fixtures/teabreak.jpeg"
       scale = 0.09
       scaled_path = "test/fixtures/teabreak-0.09.jpeg"
       assert_scale_and_save(path, scale, scaled_path)
     end
 
-    def test_scale_and_save_upcase_JPG
+    def test_upcase_JPG
       path = "test/fixtures/teabreak.JPG"
       scale = 0.09
       scaled_path = "test/fixtures/teabreak-0.09.JPG"
       assert_scale_and_save(path, scale, scaled_path)
     end
 
-    def test_scale_and_save_upcase_JPEG
+    def test_upcase_JPEG
       path = "test/fixtures/teabreak.JPEG"
       scale = 0.09
       scaled_path = "test/fixtures/teabreak-0.09.JPEG"
