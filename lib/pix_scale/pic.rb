@@ -1,3 +1,7 @@
+# TODO: Remove me. It is workaround untill Ruby/GdkPixbuf2 2.0.3 is released.
+# This is required in order to work on Windows.
+require "cairo"
+
 require "gdk_pixbuf2"
 
 module PixScale

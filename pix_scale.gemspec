@@ -20,6 +20,10 @@ Gem::Specification.new do |spec|
 
   spec.add_runtime_dependency("gdk_pixbuf2")
 
+  # TODO: Remove me. It is workaround untill Ruby/GdkPixbuf2 2.0.3 is released.
+  # This is required in order to work on Windows.
+  spec.add_runtime_dependency("cairo")
+
   spec.add_development_dependency("test-unit")
   spec.add_development_dependency("test-unit-notify")
   spec.add_development_dependency("test-unit-rr")
