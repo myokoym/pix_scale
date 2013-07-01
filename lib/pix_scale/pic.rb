@@ -2,8 +2,8 @@ require "gdk_pixbuf2"
 
 module PixScale
   class Pic
-    def self.scale_and_save(path, scale)
-      new(path).scale_and_save(scale)
+    def self.scale_and_save(path, scale, type=nil)
+      new(path).scale_and_save(scale, type)
     end
 
     attr_reader :path, :type
@@ -13,10 +13,12 @@ module PixScale
       @type = (/\A\.jpg\z/i =~ extname) ? "jpeg" : extname.sub(/^\./, "").downcase
     end
 
-    def scale_and_save(scale)
+    def scale_and_save(scale, type=nil)
       scale_string = scale.to_s.sub(/[^\.0-9]/, "_")
-      output_path = "#{dirname}/#{basename}-#{scale_string}#{extname}"
-      scale(scale).save(output_path)
+      extention = type || extname
+      extention = ".#{extention}" unless /\A\./ =~ extention
+      output_path = "#{dirname}/#{basename}-#{scale_string}#{extention}"
+      scale(scale).save(output_path, type)
     end
 
     def scale(scale)
@@ -48,8 +50,9 @@ module PixScale
       @pic = @pic.scale(width, height)
     end
 
-    def save(output_path)
-      @pic.save(output_path, @type)
+    def save(output_path, type=nil)
+      output_type = type || @type
+      @pic.save(output_path, output_type)
     end
 
     private

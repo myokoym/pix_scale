@@ -62,11 +62,18 @@ class PicTest < Test::Unit::TestCase
       assert_scale_and_save(path, scale, scaled_path)
     end
 
+    def test_type_option
+      path = "test/fixtures/teabreak.JPEG"
+      scale = 0.09
+      scaled_path = "test/fixtures/teabreak-0.09.png"
+      assert_scale_and_save(path, scale, scaled_path, "png")
+    end
+
     private
-    def assert_scale_and_save(path, scale, scaled_path)
+    def assert_scale_and_save(path, scale, scaled_path, type=nil)
       File.delete(scaled_path) if File.exist?(scaled_path)
       pic = PixScale::Pic.new(path)
-      pic.scale_and_save(scale)
+      pic.scale_and_save(scale, type)
       assert_true(File.file?(scaled_path))
       assert_true(File.size(path) > File.size(scaled_path))
       assert_true(File.size(scaled_path) > 0)
