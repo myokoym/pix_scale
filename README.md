@@ -62,6 +62,17 @@ A command line tool for scale of pix.
     -rw-rw-r-- 1 you you 31438 2013-06-27 20:00 bar.png
     -rw-rw-r-- 1 you you 16462 2013-06-27 20:01 bar-0.5.png
 
+### specify type
+
+    % ls -l
+    -rw-rw-r-- 1 you you 46643 2013-06-27 20:00 foo
+
+    % pix_scale -t png foo 0.5
+
+    % ls -l
+    -rw-rw-r-- 1 you you 46643 2013-06-27 20:00 foo
+    -rw-rw-r-- 1 you you 18539 2013-06-27 20:01 foo-0.5.png
+
 ## Contributing
 
 1. Fork it
