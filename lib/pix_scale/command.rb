@@ -6,8 +6,10 @@ module PixScale
     def self.run(*arguments)
       if /\A(-h|--help)\z/ =~ arguments[0]
         puts <<-EOM
-Usage:   pix_scale FILE... SCALE
-Example: pix_scale foo.png 0.5
+Usage:    pix_scale [-t TYPE] FILE... SCALE|WIDTH_HEIGHT
+Example1: pix_scale foo.png 0.5
+Example2: pix_scale foo.png 240_180
+Example3: pix_scale -t png foo 0.5
         EOM
         exit(true)
       elsif /\A(-v|--version)\z/ =~ arguments[0]
