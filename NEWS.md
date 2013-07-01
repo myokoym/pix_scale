@@ -1,5 +1,14 @@
 # NEWS
 
+## 0.1.1: 2013-07-01
+
+Supported specify type release!
+
+### Changes
+
+  * Improvements
+    * Added type option for specifying output type.
+
 ## 0.1.0: 2013-06-29
 
 Supported absolute length release!
